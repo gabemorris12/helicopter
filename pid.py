@@ -24,6 +24,7 @@ class PID(object):
             Kd=0.0,
             set_point=0,
             output_limits=(None, None),
+            disable_value=0,
             starting_output=0.0
     ):
         """
@@ -56,6 +57,8 @@ class PID(object):
         self._last_error = 0
 
         self.output_limits = output_limits
+        self.active = True
+        self.disable_value = disable_value
 
         # Set initial state of the controller
         self._integral = _clamp(starting_output, output_limits)
@@ -90,7 +93,7 @@ class PID(object):
         self._last_error = error
         self._last_time = now
 
-        return output
+        return dt, (output if self.active else self.disable_value)
 
     def __repr__(self):
         return (
@@ -99,6 +102,12 @@ class PID(object):
             'set_point={self.set_point!r}, output_limits={self.output_limits!r}'
             ')'
         ).format(self=self)
+
+    def disable(self):
+        self.active = False
+
+    def enable(self):
+        self.active = True
 
     @property
     def components(self):
