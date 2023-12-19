@@ -1,11 +1,12 @@
-import serial
-import time
-import threading
+# Run this from computer to control and plot live data.
 import re
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+import threading
+import time
 import warnings
-import numpy as np
+
+import matplotlib.pyplot as plt
+import serial
+from matplotlib.animation import FuncAnimation
 
 warnings.filterwarnings('ignore', category=UserWarning)
 
