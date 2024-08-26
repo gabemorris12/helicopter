@@ -13,7 +13,7 @@ Kd = 500
 
 above_90 = (1500, 1500, 600)
 
-ang_points = (8400, 52550)  # angle at 0 degrees and 180 degrees
+ang_points = (10270, 54300)  # angle at 0 degrees and 180 degrees
 
 kill_button = Pin(17, Pin.IN, Pin.PULL_DOWN)
 poll = select.poll()
