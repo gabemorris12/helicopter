@@ -83,6 +83,7 @@ class PID(object):
         self._integral += self.Ki*error*dt
         self._derivative = self.Kd*d_error/dt
 
+        # It is the integral term that provides a constant non-zero value.
         self._integral = _clamp(self._integral, self.output_limits)
 
         # Compute final output
